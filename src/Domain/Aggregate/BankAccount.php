@@ -18,7 +18,7 @@ use DateTimeImmutable;
 class BankAccount extends AggregateRoot
 {
     private const float DEBIT_FEE_RATE = 0.005; // 0.5%
-    private const float DEBIT_DAILY_OPERATIONS_LIMIT = 3;
+    private const int DEBIT_DAILY_OPERATIONS_LIMIT = 3;
 
     private readonly AccountId $id;
 
