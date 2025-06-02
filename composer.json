@@ -1,0 +1,24 @@
+{
+    "name": "pawel-brzezinski/back-account-payment-recruitment-task",
+    "require": {
+        "php": "^8.3",
+        "ext-bcmath": "*",
+        "moneyphp/money": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "BankAccountPayment\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BankAccountPayment\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "prefer-stable": true
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
+    }
+}
