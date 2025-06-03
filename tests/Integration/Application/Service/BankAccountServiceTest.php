@@ -43,12 +43,9 @@ final class BankAccountServiceTest extends TestCase
         $actualBankAccountId = $serviceUnderTest->openAccount($currency);
 
         // THEN
-        $actualBankAccounts = $this->bankAccountRepository->getAll();
+        $actualBankAccountBalance = $serviceUnderTest->getAccountBalance(accountId: $actualBankAccountId)->toFloat();
 
-        self::assertCount(1, $this->bankAccountRepository->getAll());
-        self::assertArrayHasKey($actualBankAccountId->toString(), $actualBankAccounts);
-
-        $actualBankAccount = $actualBankAccounts[$actualBankAccountId->toString()];
+        self::assertSame(0.0, $actualBankAccountBalance);
 
         //
         // Step 2. Credit account
@@ -58,13 +55,13 @@ final class BankAccountServiceTest extends TestCase
         $creditAmount2 = new Amount(35.55, $currency);
 
         // WHEN
-        $actualBankAccount->credit($creditAmount1);
-        $actualBankAccount->credit($creditAmount2);
+        $serviceUnderTest->creditAccount(accountId: $actualBankAccountId, amount: $creditAmount1);
+        $serviceUnderTest->creditAccount(accountId: $actualBankAccountId, amount: $creditAmount2);
 
         // THEN
-        $actualBankAccount = $this->bankAccountRepository->getById($actualBankAccountId);
+        $actualBankAccountBalance = $serviceUnderTest->getAccountBalance(accountId: $actualBankAccountId)->toFloat();
 
-        self::assertSame(235.55, $actualBankAccount->getBalance()->toFloat());
+        self::assertSame(235.55, $actualBankAccountBalance);
 
         //
         // Step 3. Debit account
@@ -75,13 +72,13 @@ final class BankAccountServiceTest extends TestCase
         $debitAmount2 = new Amount(20, $currency);
 
         // WHEN
-        $actualBankAccount->debit(amount: $debitAmount1, operationDate: $now);
-        $actualBankAccount->debit(amount: $debitAmount2, operationDate: $now);
+        $serviceUnderTest->debitAccount(accountId: $actualBankAccountId, amount: $debitAmount1, operationDate: $now);
+        $serviceUnderTest->debitAccount(accountId: $actualBankAccountId, amount: $debitAmount2, operationDate: $now);
 
         // THEN
-        $actualBankAccount = $this->bankAccountRepository->getById($actualBankAccountId);
+        $actualBankAccountBalance = $serviceUnderTest->getAccountBalance(accountId: $actualBankAccountId)->toFloat();
 
-        self::assertSame(205.40, $actualBankAccount->getBalance()->toFloat());
+        self::assertSame(205.40, $actualBankAccountBalance);
     }
 
     //
