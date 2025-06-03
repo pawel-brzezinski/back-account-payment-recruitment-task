@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BankAccountPayment\Tests\Unit\Domain\ValueObject;
+namespace BankAccountPayment\Domain\ValueObject;
 
 use DateTimeImmutable;
 

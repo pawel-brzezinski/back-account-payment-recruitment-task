@@ -10,9 +10,9 @@ use BankAccountPayment\Domain\Event\BankAccountWasOpened;
 use BankAccountPayment\Domain\Exception\DailyDebitLimitExceededException;
 use BankAccountPayment\Domain\Exception\LackOfFoundsException;
 use BankAccountPayment\Domain\ValueObject\AccountId;
+use BankAccountPayment\Domain\ValueObject\Amount;
 use BankAccountPayment\Domain\ValueObject\Currency;
-use BankAccountPayment\Tests\Unit\Domain\ValueObject\Amount;
-use BankAccountPayment\Tests\Unit\Domain\ValueObject\Payment;
+use BankAccountPayment\Domain\ValueObject\Payment;
 use DateTimeImmutable;
 
 class BankAccount extends AggregateRoot

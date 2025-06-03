@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BankAccountPayment\Tests\Unit\Domain\ValueObject;
 
+use BankAccountPayment\Domain\ValueObject\Amount;
 use BankAccountPayment\Domain\ValueObject\Currency;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;

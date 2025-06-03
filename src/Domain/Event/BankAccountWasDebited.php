@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BankAccountPayment\Domain\Event;
 
 use BankAccountPayment\Domain\ValueObject\AccountId;
-use BankAccountPayment\Tests\Unit\Domain\ValueObject\Amount;
+use BankAccountPayment\Domain\ValueObject\Amount;
 use DateTimeImmutable;
 
 final readonly class BankAccountWasDebited implements DomainEventInterface

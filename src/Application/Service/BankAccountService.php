@@ -8,10 +8,10 @@ use BankAccountPayment\Domain\Aggregate\BankAccount;
 use BankAccountPayment\Domain\Exception\DailyDebitLimitExceededException;
 use BankAccountPayment\Domain\Exception\LackOfFoundsException;
 use BankAccountPayment\Domain\ValueObject\AccountId;
+use BankAccountPayment\Domain\ValueObject\Amount;
 use BankAccountPayment\Domain\ValueObject\Currency;
 use BankAccountPayment\Infrastructure\Repository\InMemoryBankAccountRepository;
 use BankAccountPayment\Primitives\Exception\ResourceNotFoundException;
-use BankAccountPayment\Tests\Unit\Domain\ValueObject\Amount;
 
 final readonly class BankAccountService
 {
