@@ -56,6 +56,9 @@ final readonly class BankAccountService
         $this->bankAccountRepository->save($bankAccount);
     }
 
+    /**
+     * @throws ResourceNotFoundException
+     */
     public function getAccountBalance(AccountId $accountId): Amount
     {
         $bankAccount = $this->bankAccountRepository->getById($accountId);
